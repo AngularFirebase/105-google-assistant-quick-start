@@ -1,12 +1,10 @@
 import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
-admin.initializeApp();
 
-// Web scraping dependencies
+// Web scraping deps
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 
-// Google Assistant dependen
+// Google Assistant deps
 import { dialogflow, SimpleResponse, BasicCard, Button, Image } from 'actions-on-google';
 const app = dialogflow({ debug: true });
 
@@ -38,8 +36,6 @@ async function scrapePage() {
   const html = await page.text();
 
   const $ = cheerio.load(html)
-
-  console.log( $('.preview-content').first().html() )
 
   const lesson = $('.preview-content').first()
 
